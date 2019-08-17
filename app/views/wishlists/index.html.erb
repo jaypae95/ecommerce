@@ -1,0 +1,12 @@
+<table>
+  <% @wishlist.each do |wishlist| %>
+  <tr>
+    <td>
+      <%= wishlist.item.title %>
+    </td>
+    <td>
+      <%= link_to "삭제", wishlist_path(wishlist.id), method: :delete %>
+    </td>
+  </tr>
+  <% end %>
+</table>

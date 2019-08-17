@@ -1,0 +1,16 @@
+<div class="">
+  <table>
+    <tr>
+      <th>상품</th>
+      <th>설명</th>
+      <th>가격</th>
+    </tr>
+    <% @items.each do |item| %>
+    <tr>
+      <td><%= link_to item.title, item_path(item) %></td>
+      <td><%= item.body %></td>
+      <td><%= item.price %>원</td>
+    </tr>
+    <% end %>
+  </table>
+</div>

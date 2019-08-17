@@ -1,0 +1,40 @@
+<div class="">
+    <% if @lineitems.present?  %>
+    <table>
+      <tr>
+        <th>상품</th>
+        <th>설명</th>
+        <th>갯수</th>
+        <th>가격</th>
+        <th></th>
+      </tr>
+    <% sum = 0 %>
+    <% @lineitems.each do |lineitem| %>
+    <tr>
+      <td><%= lineitem.item.title%></td>
+      <td><%= lineitem.item.body %></td>
+      <td><%= lineitem.quantity %></td>
+      <td><%= lineitem.amount %>원</td>
+      <td><%= link_to "삭제", line_item_path(lineitem.id), method: :delete %></td>
+      <% sum += lineitem.amount %>
+    </tr>
+    <% end %>
+  </table>
+  <%= form_for @order, url: :order_order_items, method: :post do |f|%>
+      <%= f.hidden_field :id%>
+      <%= f.text_field :name, placeholder: "이름" %>
+      <%= f.text_field :phone, placeholder: "전화번호" %>
+      <%= f.text_field :country, placeholder: "국가" %>
+      <%= f.text_field :zipcode, placeholder: "우편번호" %>
+      <%= f.text_field :address1, placeholder: "주소" %>
+      <%= f.text_field :address2, placeholder: "나머지 주소" %>
+      <%= f.text_field :note, placeholder: "배송 시 요청사항" %>
+      <%= f.submit value: "주문하기"%>
+      총 가격 <%= sum %>원
+    <% end %>
+    <% else %>
+    <p>장바구니가 비워져 있습니다.</p>
+    <% end %>
+  <p>
+  </p>
+</div>
