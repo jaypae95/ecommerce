@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :wishlists
   resources :orders
   resources :line_items
+  resources :reviews
 
   post 'order_items', to: 'orders#order_items', as: :order_order_items
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
