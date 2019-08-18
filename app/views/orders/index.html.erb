@@ -28,9 +28,9 @@
       <%= f.text_field :zipcode, placeholder: "우편번호" %>
       <%= f.text_field :address1, placeholder: "주소" %>
       <%= f.text_field :address2, placeholder: "나머지 주소" %>
-      <%= f.text_field :note, placeholder: "배송 시 요청사항" %>
+      <%= f.text_field :note, placeholder: "배송 시 요청사항" %><br>
+      <p>총 가격 <%= sum %>원</p>
       <%= f.submit value: "주문하기"%>
-      총 가격 <%= sum %>원
     <% end %>
     <% else %>
     <p>장바구니가 비워져 있습니다.</p>

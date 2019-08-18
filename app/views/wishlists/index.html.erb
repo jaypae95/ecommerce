@@ -2,7 +2,7 @@
   <% @wishlist.each do |wishlist| %>
   <tr>
     <td>
-      <%= wishlist.item.title %>
+      <%= link_to  wishlist.item.title, item_path(wishlist.item.id)%>
     </td>
     <td>
       <%= link_to "삭제", wishlist_path(wishlist.id), method: :delete %>
