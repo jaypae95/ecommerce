@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'home#index'
 
-  resources :items, only: [:index, :show]
+  resources :items
   resources :wishlists
   resources :orders
   resources :line_items

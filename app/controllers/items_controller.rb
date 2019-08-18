@@ -6,12 +6,22 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @item.avatar.build
+  end
+
+  def create
+    @item = Item.create(item_params)
+
+    redirect_to(item_path(@item.id))
   end
 
   def show
-    @item = Item.find params[:id]
+    @item = Item.find(params[:id])
     @review = Review.new
     @item_reviews = Review.where(item_id: @item.id)
+  end
+
+  private
+  def item_params
+    params.require(:item).permit(:title, :body, :price, :category_id, :avatar)
   end
 end

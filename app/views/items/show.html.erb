@@ -6,6 +6,9 @@
 <body>
   <h1><%= @item.title %></h1>
   <h3><%= @item.body %></h3>
+  <% if @item.avatar.present? %>
+  <%= image_tag @item.avatar.url, style: "width:100px; height:100px" %>
+  <% end %>
   <p><%= @item.price %>원</p>
   <button type="button", onclick="wishlist_alert()">
     <%= link_to "찜하기", wishlists_path(id: @item.id), method: :post%>

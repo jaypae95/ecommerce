@@ -1,0 +1,11 @@
+<div class="">
+  <%= form_for @item do |f|%>
+      <%= f.text_field :title, placeholder: "Title"%>
+      <%= f.text_area :body, placeholder: "Body" %>
+      <%= f.number_field :price, placeholder: "Price" %>
+      <%= f.select :category_id,
+      options_for_select([['Electronics', 1], ['Clothes', 2]]) %>
+      <%= f.file_field :avatar%>
+      <%= f.submit value: "장바구니"%>
+    <% end %>
+</div>
