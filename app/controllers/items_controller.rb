@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_admission, only: [:new, :create, :edit, :update, :destroy]
+
   def index
     @items = Item.all
   end
@@ -8,10 +10,19 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    item = Item.find(params[:id])
+    item.update(item_params)
+    redirect_to(item_path(item))
+  end
+
   def create
     @item = Item.create(item_params)
-
-    redirect_to(item_path(@item.id))
+    redirect_to(item_path(@item))
   end
 
   def show
@@ -20,8 +31,22 @@ class ItemsController < ApplicationController
     @item_reviews = Review.where(item_id: @item.id)
   end
 
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+
+    redirect_to(items_path)
+  end
+
   private
   def item_params
     params.require(:item).permit(:title, :body, :price, :category_id, :avatar)
   end
+
+  def check_admission
+    if !current_user.is_admin
+      redirect_to items_path
+    end
+  end
+
 end

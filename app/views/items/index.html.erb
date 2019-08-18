@@ -1,4 +1,8 @@
 <div class="">
+  <% if current_user.is_admin %>
+    <%= link_to "상품 등록하기", new_item_path %>
+  <% end %>
+
   <table>
     <tr>
       <th>상품</th>
@@ -12,6 +16,5 @@
       <td><%= item.price %>원</td>
     </tr>
     <% end %>
-      <%= link_to "상품 등록하기", new_item_path %>
   </table>
 </div>

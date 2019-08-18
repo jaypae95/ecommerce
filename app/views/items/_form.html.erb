@@ -1,0 +1,11 @@
+<div class="">
+  <%= form_for @item do |f|%>
+      <%= f.text_field :title, placeholder: "Title", required: true%>
+      <%= f.text_area :body, placeholder: "Body", required: true%>
+      <%= f.number_field :price, required: true, min: "1"%>
+      <%= f.select :category_id,
+      options_for_select([['Electronics', 1], ['Clothes', 2]]), required: true %>
+      <%= f.file_field :avatar, required: true%>
+      <%= f.submit value: "완료"%>
+    <% end %>
+</div>

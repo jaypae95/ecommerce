@@ -7,23 +7,27 @@
   <h1><%= @item.title %></h1>
   <h3><%= @item.body %></h3>
   <% if @item.avatar.present? %>
-  <%= image_tag @item.avatar.url, style: "width:100px; height:100px" %>
+  <%= image_tag @item.avatar.url, style: "width:300px; height:300px" %>
   <% end %>
   <p><%= @item.price %>원</p>
   <button type="button", onclick="wishlist_alert()">
     <%= link_to "찜하기", wishlists_path(id: @item.id), method: :post%>
   </button>
+  <% if current_user.is_admin %>
+  <%= link_to "수정", edit_item_path(@item) %>
+  <%= link_to "삭제", item_path(@item), method: :delete %>
+  <% end %>
   <div class="">
     <%= form_for @item, url: :orders, method: :post do |f|%>
         <%= f.hidden_field :id%>
-        <input type="number" name="quantity" id="count">
+        <input type="number" name="quantity" id="count" min="1">
         <%= f.submit value: "장바구니"%>
       <% end %>
   </div>
   <div class="">
     <%= form_for @review, url: :reviews, method: :post do |f|%>
         <%= f.hidden_field :item_id, value: @item.id%>
-        <%= f.text_field :body %>
+        <%= f.text_field :body, required: true %>
         <%= f.submit value: "댓글 달기"%>
       <% end %>
   </div>
