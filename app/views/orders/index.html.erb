@@ -2,6 +2,7 @@
     <% if @lineitems.present?  %>
     <table>
       <tr>
+        <th></th>
         <th>상품</th>
         <th>설명</th>
         <th>갯수</th>
@@ -11,6 +12,7 @@
     <% sum = 0 %>
     <% @lineitems.each do |lineitem| %>
     <tr>
+      <td><%= image_tag lineitem.item.avatar.url, style: "width:50px; height:50px"%></td>
       <td><%= lineitem.item.title%></td>
       <td><%= lineitem.item.body %></td>
       <td><%= lineitem.quantity %></td>

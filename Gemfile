@@ -6,6 +6,9 @@ ruby '2.4.2'
 gem 'devise'
 gem 'activeadmin'
 
+gem 'bootstrap', '~> 4.3.1'
+gem 'jquery-rails'
+
 gem 'carrierwave', '>= 2.0.0.rc', '< 3.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
